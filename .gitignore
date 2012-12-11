@@ -1,0 +1,7 @@
+game/*
+!game/README
+node_modules/*
+!node_modules/README
+users/*
+!users/README
+jj2ded.sqlite

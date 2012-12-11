@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jj2ded admin panel</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="pagewrapper">
+
+	<section id="adminpanel" class="page">
+		<header>jj2ded</header>
+		<button type="button" id="logoutBtn">Logout</button>
+		<hr>
+		<div id="content">
+
+			<h2>Servers</h2>
+			<form id="addServerForm">
+				<table>
+
+					<tr><td>Activated:</td><td><input type="checkbox" name="active" checked></td></tr>
+					<tr><td>Port:</td><td><select name="port"></select></td></tr>
+					<tr><td>Servername:</td><td><input type="text" name="servername" maxlength="31" style="width: 221px;"></td></tr>
+					<tr><td>Gamemode: </td><td><select name="gamemode">
+					<optgroup label="Normal gamemodes">
+						<option value="COOP">Cooperative</option>
+						<option value="RACE">Race</option>
+						<option value="BATTLE" selected>Battle</option>
+						<option value="TREASURE">Treasure Hunt</option>
+						<option value="CAPTURE">Capture the flag</option>
+					</optgroup>
+					<optgroup label="JJ2+ gamemodes">
+						<option value="RT">Roast Tag</option>
+						<option value="LRS">Last Rabbit Standing</option>
+						<option value="XLRS">Extended Last Rabbit Standing</option>
+						<option value="PEST">Pestilence</option>
+						<option value="TB">Team Battle</option>
+						<option value="DCTF">Death CTF</option>
+						<option value="JB">Jailbreak</option>
+						<option value="FR">Flag Run</option>
+						<option value="TLRS">Team Last Rabbit Standing</option>
+						<option value="DOM">Domination</option>
+					</optgroup>
+				</select></td></tr>
+				<tr><td>Maxscore:</td><td><input type="number" name="maxscore" min="1" max="255" value="10" style="width: 80px;"></td></tr>
+				<tr><td>Max players:</td><td><input type="number" name="maxplayers" min="1" max="32" value="32" style="width: 80px;"></td></tr>
+				<tr><td>Listed:</td><td><input type="checkbox" name="listed" checked></td></tr>
+				<tr><td colspan=2><br></td></tr>
+				<tr><td>JJ2+ settings filename:</td><td><input type="text" name="plussettings" value="standard" style="width: 221px;"></td></tr>
+				<tr><td>JJ2+ admin filename:</td><td><input type="text" name="plusadmin" value="standard" style="width: 221px;"></td></tr>
+				<tr><td>JJ2+ levellist filename:</td><td><input type="text" name="pluslevellist" value="standard" style="width: 221px;"></td></tr>
+
+				<tr><td></td><td><input type="submit" value="Save"></td></tr>
+				</table>
+			</form>
+
+			<br>
+
+			<table border=0 cellspacing=0 cellpadding=4 id="mainservertable">
+				
+				<thead><tr><th>Servername</th><th>Port</th><th>Gamemode</th><th>Maxscore</th><th>Maxplayers</th><th>Listed</th><th>Settings, admin, levellist</th><th>User</th><th colspan=2></th></tr></thead>
+				<tbody id="servertable"></tbody>
+			</table>
+
+			<h2>File manager</h2>
+			<strong>Upload</strong>
+			<form id="filelistuploadform" method="post" onsubmit="return false;">
+				<input type="file" multiple name="files"><br>
+				<input type="checkbox" name="uploadoverwrite" checked> Overwrite existing files<br>
+				<br>
+				<input type="submit" value="Upload">
+			</form>
+			<meter min=0 max=1 id="uploadmeter"></meter>
+
+			<hr>
+
+			<button id="filelistdownload">Download selected files</button><br>
+			<meter min=0 max=1 id="downloadmeter"></meter>
+
+			<hr>
+
+			<button id="filelistdelete" style="color: red;">Delete selected files</button><br>
+
+			<hr>
+
+			<button id="filelistcheckall">Select all</button><button id="filelistuncheckall">Select none</button><br>
+			<br>
+
+			<div id="filelistwrapper">
+				<table border=0 cellspacing=0 cellpadding=4 id="mainfilelisttable">
+					<thead><th></th><th>Filename</th><th>Title</th><th>Tileset</th><th>Music</th><th>Next</th><th>Bonus</th><th>Secret</th><th>Size</th><th>Modification date</th></thead>
+					<tbody id="filelisttable"></tbody>
+				</table>
+			</div>
+			
+
+		</content>
+	</section>
+
+	<section id="startpage" class="page">
+		<table style="width: 100%; height: 100%;"><tr><td style="vertical-align: middle; text-align: center;">
+			<div id="logintile">
+				<header>jj2ded admin panel</header>
+				<form id="loginForm" method="post" onsubmit="return false;">
+					Username: <input type="text" name="username" value="djazz"><br>
+					Password: <input type="password" name="password" value="123456"><br>
+					<input type="submit" value="Login">
+				</form>
+			</div>
+		</td></tr></table>
+	</section>
+</div>
+
+<script src="lib/FileSaver.min.js"></script>
+<script src="panel.js"></script>
+</body>
+</html>
